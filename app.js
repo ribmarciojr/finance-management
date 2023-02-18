@@ -76,7 +76,7 @@ class Bd {
         despesasFiltradas = this.recuperadorTodasDespesas()
 
         
-        console.log(despesasFiltradas[0]['ano'])
+        
 
 
         for(let atributos in despesa){
@@ -90,7 +90,7 @@ class Bd {
             if(despesa[attr] != ''){
                 despesasFiltradas = despesasFiltradas.filter(d => d[attr] == despesa[attr])
 
-            }
+            } 
         }
 
         return despesasFiltradas
@@ -139,7 +139,7 @@ function cadastrarDespesa() { //Função ativada no click do usuário
         document.getElementById('modalColor').className = 'modal-header text-success'
         
         document.getElementById('modalNotation').innerHTML = 'Você obteve êxito no registro.'
-        document.getElementById('modalNotation').className = 'modal-body'
+        document.getElementById('modalNotation').className = 'modal-body text-dark'
 
         
         document.getElementById('modalButton').className = 'btn btn-success'
@@ -151,7 +151,7 @@ function cadastrarDespesa() { //Função ativada no click do usuário
         document.getElementById('modalColor').className = 'modal-header text-danger'
 
         document.getElementById('modalNotation').innerHTML = 'Falha no registro.'
-        document.getElementById('modalNotation').className = 'modal-body'
+        document.getElementById('modalNotation').className = 'modal-body text-dark'
 
         
         document.getElementById('modalButton').className = 'btn btn-danger'
@@ -263,6 +263,20 @@ function pesquisadorDespesa(){
         line.insertCell(1).innerHTML = d.tipo
         line.insertCell(2).innerHTML = d.descricao
         line.insertCell(3).innerHTML = d.valor
+
+        let btn = document.createElement("button")
+        btn.className = 'btn btn-danger'
+        btn.innerHTML = '<i class="fas fa-times"></i>'
+        btn.id = `id_btn_${d.id}`
+        btn.onclick = function() {
+            
+
+            bd.removerDespesa(d.id)
+
+            location.reload()
+        }
+        
+        line.insertCell(4).append(btn)
         
     }) 
     

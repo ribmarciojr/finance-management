@@ -1,0 +1,47 @@
+
+    /* Cores
+    #8956F1
+    #CB80FF
+    #241B45
+    #020102
+    */
+
+body{
+    background: linear-gradient(#CB80FF, #241B45);
+    color: white;
+    
+} 
+
+.bg-purple{
+    background-color: #241B45;
+    outline: none;
+    color: white;
+    
+
+}
+
+.bg-input-purple{
+    background: #8956F1;
+}
+
+.txt-pink{
+    color: white;
+}
+
+.container-data{
+    width: auto;
+}
+
+@media (min-width: 900px) {
+    .content > .row{
+        display: inline-flex;
+        width: 48%;
+        
+        
+    }
+
+    .content > .row-md{
+        margin-right: 7.5%;
+    }
+}
+

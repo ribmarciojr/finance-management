@@ -5,7 +5,7 @@
 
 		<!-- Bootstrap início -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -15,13 +15,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <script src="app.js"></script>
-
+    <meta content="width=device-width, initial-scale=1" name="viewport"> 
 	</head>
 
   <body onload="carregaListaDespesas()">
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-purple mb-5">
       <div class="container">
         <a class="navbar-brand" href="#">
            <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
@@ -45,70 +45,97 @@
     </nav>
 
     <div class="container">
-      <div class="row mb-5">
-        <div class="col">
+
+      <div class="row"><!-- row title -->
+        <div class="col mb-5">
           <h1 class="display-4">Consulta de despesas</h1>
         </div>
       </div>
 
-      <div class="row mb-2">
-        <div class="col-md-2">
-          <select class="form-control" id="ano">
-            <option value="">Ano</option>
-            <option value="2023">2023</option>
-          </select>
-        </div>
+      <div class="content">
 
-        <div class="col-md-2">
-          <select class="form-control" id="mes">
-            <option value="">Mês</option>
-            <option value="1">Janeiro</option>
-            <option value="2">Fevereiro</option>
-            <option value="3">Março</option>
-            <option value="4">Abril</option>
-            <option value="5">Maio</option>
-            <option value="6">Junho</option>
-            <option value="7">Julho</option>
-            <option value="8">Agosto</option>
-            <option value="9">Setembro</option>
-            <option value="10">Outubro</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
-          </select>
-        </div>
+        <div class="row mb-2 row-md" ><!-- row year/month/day-->
+          <div class="col-4 col-md-4 order-3">
+            <select class="form-control" id="ano">
+              <option value="">Ano</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+
+          <div class="col-4 col-md-4 order-2">
+            <select class="form-control" id="mes">
+              <option value="">Mês</option>
+              <option value="1">Janeiro</option>
+              <option value="2">Fevereiro</option>
+              <option value="3">Março</option>
+              <option value="4">Abril</option>
+              <option value="5">Maio</option>
+              <option value="6">Junho</option>
+              <option value="7">Julho</option>
+              <option value="8">Agosto</option>
+              <option value="9">Setembro</option>
+              <option value="10">Outubro</option>
+              <option value="11">Novembro</option>
+              <option value="12">Dezembro</option>
+            </select>
+          </div>
+          
+          <div class="col-4 col-md-4 order-1">
+            <input type="text" class="form-control" placeholder="Dia" id="dia" />
+          </div>
+
+          
+
         
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Dia" id="dia" />
+
         </div>
 
-        <div class="col-md-6">
-          <select class="form-control" id="tipo">
-            <option value="">Tipo</option>
-            <option value="1">Alimentação</option>
-            <option value="2">Educação</option>
-            <option value="3">Lazer</option>
-            <option value="4">Saúde</option>
-            <option value="5">Transporte</option>
-          </select>
+        <div class="row mb-2"><!-- row tipo-->
+            <div class="col-12 col-md-12">
+                <select class="form-control" id="tipo">
+                  <option value="">Tipo</option>
+                  <option value="1">Alimentação</option>
+                  <option value="2">Educação</option>
+                  <option value="3">Lazer</option>
+                  <option value="4">Saúde</option>
+                  <option value="5">Transporte</option>
+                </select>
+              </div>
+            </div>
+
+        <div class="row row-md mb-2"><!-- row description-->  
+
+          <div class="col-12 col-md-12">
+            <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
+          </div>
+
         </div>
+
+        <div class="row  mb-5"><!-- Value/Button-->
+          
+
+          <div class="col-5 col-md-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input type="text" class="form-control" placeholder="Valor" id="valor" />
+
+            </div>
+            
+          </div>
+
+          <div class="col-3 col-md-3 offset-4 d-flex justify-content-end">
+            <button type="button" class="btn bg-purple " onclick="pesquisadorDespesa()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="row  mb-5">
-        <div class="col-md-8">
-          <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
-        </div>
-
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Valor" id="valor" />
-        </div>
-
-        <div class="col-md-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary" onclick="pesquisadorDespesa()">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
+      <div class="container-data">
       <div class="row">
         <div class="col">
           <table class="table" >
@@ -126,6 +153,7 @@
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </div>
     
