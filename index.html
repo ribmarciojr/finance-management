@@ -12,10 +12,10 @@
     <!-- Bootstrap fim -->
 
     <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/5059f19310.js" crossorigin="anonymous"></script>
 
     <script src="app.js"></script>
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 	</head>
 
   <body>
@@ -23,11 +23,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-purple mb-5">
       <div class="container">
+
         <a class="navbar-brand" href="#">
-           <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
+          <div class="logo-svg">
+            <i class="fa-solid fa-building-columns fa-2xl" ></i>
+          </div>
+          
         </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
+
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -44,20 +50,20 @@
       </div>
     </nav>
 
-    <div class="container ">
+    <div class="container " >
 
       <div class="row"> <!-- row title -->
         <div class="col mb-5">
-          <h1 class="display-4" >Registro de nova despesa</h1>
+          <h1 class="display-4" >Registre sua despesa</h1>
         </div>
 
       </div>
     
-      <div class="content">
+      <div class="content" onclick="validation.activeCamp()" >
 
         <div class="row mb-2 row-md" ><!-- row year/month/day-->
-            <div class="col-4 col-md-4 order-3">
-                <select class="form-control " id="ano">
+            <div class="col-4 col-md-4 order-3" >
+                <select class="form-control " id="ano" onblur="validation.antNullCamp()">
                   <option value="">Ano</option>
                   <option value="2024">2024</option>
                   <option value="2023">2023</option>
@@ -66,7 +72,7 @@
             </div>
 
             <div class="col-4 col-md-4 order-2">
-              <select class="form-control" id="mes">
+              <select class="form-control" id="mes" onblur="validation.antNullCamp()">
                 <option value="">Mês</option>
                 <option value="1">Janeiro</option>
                 <option value="2">Fevereiro</option>
@@ -83,8 +89,10 @@
                 </select>
             </div>
                   
-            <div class="col-4 col-md-4 order-1">
-                <input type="text" class="form-control" placeholder="Dia" id="dia" />
+            <div class="col-4 col-md-4 order-1 ">
+                <input type="text" class="form-control"  
+                  onblur="validation.antNullCamp()"
+                placeholder="Dia" id="dia" />
             </div>
         </div>
           
@@ -93,7 +101,7 @@
         <div class="row mb-2" ><!-- row tipo-->
         
           <div class="col-12 col-md-12 ">
-            <select class="form-control" id="tipo">
+            <select class="form-control" id="tipo" onblur="validation.antNullCamp()">
               <option value="">Tipo</option>
               <option value="1">Alimentação</option>
               <option value="2">Educação</option>
@@ -106,8 +114,9 @@
 
         <div class="row mb-2 row-md"><!-- row description-->        
           
-          <div class="col-12">
-              <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
+          <div class="col-12 d-flex ">
+              <input type="text" class="form-control" placeholder="Descrição" id="descricao" onblur="validation.antNullCamp()"   />
+              
           </div>
           
         </div>
@@ -119,7 +128,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">$</div>
               </div>
-              <input type="text" class="form-control " placeholder="Valor" id="valor" />
+              <input type="text" class="form-control " placeholder="Valor" id="valor" onblur="validation.antNullCamp()"/>
             </div>
             
           </div>

@@ -12,7 +12,7 @@ class Despesa {
     validarData(){
         
         for(let i in this){
-            if(this[i] === undefined || this[i] === '' || this[i] === null){ //Retorna falso, caso algum campo estja vazio
+            if(this[i] === undefined || this[i] === '' || this[i] === null){ //Retorna falso, caso algum campo esteja vazio no momento da adição
               return false  
             } 
             
@@ -23,7 +23,35 @@ class Despesa {
 
     }
 
+    activeCamp(){ //Onfocus: determina id do campo ativo dinâmicamente
+        
+       this.active = document.activeElement;
+        
+    
+    }
+
+
+    antNullCamp(){ //Onblur: recupera valor ; null ? is-valid ; is-invalid
+        
+        let value = this.active.value
+        
+        switch(value) { //Switch case allows to implement style for validation later
+            case '':
+                this.active.classList.add('is-invalid')
+
+                //this.active.innerHTML ='<i class="fa-solid fa-circle-exclamation fa-sm"></i>'
+                break
+            default:
+                this.active.classList.add('is-valid')
+        }
+
+        
+    }
+
+
 }
+
+let validation = new Despesa()
 
 
 class Bd {
@@ -281,3 +309,6 @@ function pesquisadorDespesa(){
     }) 
     
 }
+
+
+

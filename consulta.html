@@ -12,7 +12,7 @@
     <!-- Bootstrap fim -->
 
     <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/5059f19310.js" crossorigin="anonymous"></script>
 
     <script src="app.js"></script>
     <meta content="width=device-width, initial-scale=1" name="viewport"> 
@@ -24,7 +24,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-purple mb-5">
       <div class="container">
         <a class="navbar-brand" href="#">
-           <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
+           <div class="logo-svg">
+              <i class="fa-solid fa-building-columns fa-2xl"></i>
+           </div>
+
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -48,7 +51,7 @@
 
       <div class="row"><!-- row title -->
         <div class="col mb-5">
-          <h1 class="display-4">Consulta de despesas</h1>
+          <h1 class="display-4">Consulte suas despesas</h1>
         </div>
       </div>
 
@@ -135,27 +138,32 @@
 
       </div>
 
-      <div class="container-data">
-      <div class="row">
-        <div class="col">
-          <table class="table" >
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Tipo</th>
-                <th>Descrição</th>
-                <th>Valor</th>
-                <th></th>
-              </tr>
-            </thead >
+      <div class="container-data"> <!-- Tabela ROW -->
+        <div class="row">
+          <div class="col">
 
-            <tbody id="tabelaDespesas">
-            </tbody>
-          </table>
+            <div class="table-responsive">
+              <table class="table table-hover" >
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Tipo</th>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                  <th></th>
+                </tr>
+              </thead >
+
+              <tbody id="tabelaDespesas"><!-- Dados inseridos dinamicamente -->
+              </tbody>
+
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
+
+    </div><!-- Fim do Container -->
     
   </body>	
 

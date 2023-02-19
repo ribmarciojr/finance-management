@@ -30,7 +30,18 @@ body{
 
 .container-data{
     width: auto;
+
 }
+
+.logo-svg{
+    height: 50px;
+    width: 50px;
+    
+    display: flex;
+    align-items: center;
+    
+}
+
 
 @media (min-width: 900px) {
     .content > .row{
@@ -44,4 +55,15 @@ body{
         margin-right: 7.5%;
     }
 }
+
+/*.is-invalid-input{
+    border:1px solid #5cb85c !important;
+    
+}
+*/
+
+.is-valid{
+    border:1px solid #5cb85c !important;
+}
+
 
