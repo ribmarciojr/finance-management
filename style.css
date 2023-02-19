@@ -7,7 +7,7 @@
     */
 
 body{
-    background: linear-gradient(#CB80FF, #241B45);
+    background: linear-gradient(#CB80FF, #241B45)  ;
     color: white;
     
 } 
@@ -20,9 +20,6 @@ body{
 
 }
 
-.bg-input-purple{
-    background: #8956F1;
-}
 
 .txt-pink{
     color: white;
@@ -67,3 +64,16 @@ body{
 }
 
 
+.table-search-null{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    
+    
+}
+
+.table-search-null-content{
+    color: rgb(255,255,255,0.6);
+    
+
+}

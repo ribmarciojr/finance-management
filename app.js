@@ -39,7 +39,6 @@ class Despesa {
             case '':
                 this.active.classList.add('is-invalid')
 
-                //this.active.innerHTML ='<i class="fa-solid fa-circle-exclamation fa-sm"></i>'
                 break
             default:
                 this.active.classList.add('is-valid')
@@ -163,7 +162,7 @@ function cadastrarDespesa() { //Função ativada no click do usuário
 
 
         $('#modalRegistraDespesa').modal('show')
-        document.getElementById('modalTitle').innerHTML = 'Registrado com Sucesso! ! !'
+        document.getElementById('modalTitle').innerHTML = 'Registrado com Sucesso!'
         document.getElementById('modalColor').className = 'modal-header text-success'
         
         document.getElementById('modalNotation').innerHTML = 'Você obteve êxito no registro.'
@@ -175,7 +174,7 @@ function cadastrarDespesa() { //Função ativada no click do usuário
 
     } else {
         $('#modalRegistraDespesa').modal('show')
-        document.getElementById('modalTitle').innerHTML = 'Preencha todos os campos indicados! ! !'
+        document.getElementById('modalTitle').innerHTML = 'Preencha todos os campos indicados!'
         document.getElementById('modalColor').className = 'modal-header text-danger'
 
         document.getElementById('modalNotation').innerHTML = 'Falha no registro.'
@@ -238,7 +237,7 @@ function carregaListaDespesas(){
         }
         
         line.insertCell(4).append(btn)
-        console.log(despesas)
+        
     })
     
 }
@@ -260,55 +259,73 @@ function pesquisadorDespesa(){
     let tabelaDespesas = document.getElementById('tabelaDespesas') //seleção da viwtable de elementos
     tabelaDespesas.innerHTML = '';
     
+    let errorPop = document.querySelector('#search-null')
+    let errorMessage = '<div class="table-search-null" id="error"><p class="table-search-null-content">Ops! Despesa não encontrada!</p></div>'
     
-    
-    despesasViwed.forEach(function(d) {
-        
-        let line = tabelaDespesas.insertRow()
+     
+    if(document.querySelector('#error') != null){
+        document.querySelector('#error').remove()
+    }
 
-        line.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+
+    if(despesasViwed == ''){
+
         
+        errorPop.innerHTML = errorMessage
+        
+    } else{
+
+    
+    
+        despesasViwed.forEach(function(d) {
             
-            switch(parseInt(d.tipo)){
-                case 1:
-                    d.tipo = 'Alimentação'
-                        break
-                case 2:
-                    d.tipo = 'Educação'
-                        break           
-                case 3:
-                    d.tipo = 'Lazer'
-                        break
-                case 4:
-                    d.tipo = 'Saúde'
-                        break
-                case 5:
-                    d.tipo = 'Transporte'
-                        break
+            let line = tabelaDespesas.insertRow()
 
+            line.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+            
+                
+                switch(parseInt(d.tipo)){
+                    case 1:
+                        d.tipo = 'Alimentação'
+                            break
+                    case 2:
+                        d.tipo = 'Educação'
+                            break           
+                    case 3:
+                        d.tipo = 'Lazer'
+                            break
+                    case 4:
+                        d.tipo = 'Saúde'
+                            break
+                    case 5:
+                        d.tipo = 'Transporte'
+                            break
+
+                }
+
+            line.insertCell(1).innerHTML = d.tipo
+            line.insertCell(2).innerHTML = d.descricao
+            line.insertCell(3).innerHTML = d.valor
+
+            let btn = document.createElement("button")
+            btn.className = 'btn btn-danger'
+            btn.innerHTML = '<i class="fas fa-times"></i>'
+            btn.id = `id_btn_${d.id}`
+            btn.onclick = function() {
+                
+
+                bd.removerDespesa(d.id)
+
+                location.reload()
             }
-
-        line.insertCell(1).innerHTML = d.tipo
-        line.insertCell(2).innerHTML = d.descricao
-        line.insertCell(3).innerHTML = d.valor
-
-        let btn = document.createElement("button")
-        btn.className = 'btn btn-danger'
-        btn.innerHTML = '<i class="fas fa-times"></i>'
-        btn.id = `id_btn_${d.id}`
-        btn.onclick = function() {
             
+            line.insertCell(4).append(btn)
+            
+        }) 
 
-            bd.removerDespesa(d.id)
-
-            location.reload()
-        }
-        
-        line.insertCell(4).append(btn)
-        
-    }) 
-    
+    }
 }
+
 
 
 
