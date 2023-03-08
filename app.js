@@ -18,18 +18,13 @@ class Despesa {
             
         } 
         return true 
-        
-        
 
     }
 
     activeCamp(){ //Onfocus: determina id do campo ativo dinâmicamente
-        
        this.active = document.activeElement;
         
-    
     }
-
 
     antNullCamp(){ //Onblur: recupera valor ; null ? is-valid ; is-invalid
         
@@ -46,12 +41,9 @@ class Despesa {
 
         
     }
-
-
 }
 
 let validation = new Despesa()
-
 
 class Bd {
     constructor(){ //Seta o primeiro ID = 0, no momento de construção da classe
@@ -77,7 +69,6 @@ class Bd {
     recuperadorTodasDespesas(){ //Recupera todoas as despesas definidas.
 
         let listaDespesas = Array()
-
         let id = localStorage.getItem('id') //Nesse caso, o key id terá o mesmo valor da ultima key armazenada
        
        //Recuperação de todas as despesas através de looping do index
@@ -101,39 +92,27 @@ class Bd {
     pesquisar(despesa){
         let despesasFiltradas = []
         despesasFiltradas = this.recuperadorTodasDespesas()
-
         
-        
-
-
         for(let atributos in despesa){
             validacaoConsulta(atributos)
-
+            
         }
 
-
         function validacaoConsulta(attr){
-            
             if(despesa[attr] != ''){
-                despesasFiltradas = despesasFiltradas.filter(d => d[attr] == despesa[attr])
-
+                despesasFiltradas = despesasFiltradas.filter(d => d[attr].toLowerCase().includes(despesa[attr].toLowerCase()))
             } 
         }
 
         return despesasFiltradas
-        
-        
-
     }
 
     removerDespesa(id){
         localStorage.removeItem(id)
     }
-
 }
 
 let bd = new Bd()
-
 
 function cadastrarDespesa() { //Função ativada no click do usuário
     //Recuperação de valores cadastrados
@@ -146,10 +125,6 @@ function cadastrarDespesa() { //Função ativada no click do usuário
     
     let despesas = new Despesa(ano, mes, dia, tipo, descricao, valor) //Objetificação da despesa cadastrada
     
-
-
-    
-
     if(despesas.validarData()) {
         bd.save(despesas) //Envio do objeto em arquivo JSON  
 
@@ -183,7 +158,6 @@ function cadastrarDespesa() { //Função ativada no click do usuário
         
         document.getElementById('modalButton').className = 'btn btn-danger'
     }
-   
 }
 
 function carregaListaDespesas(){
@@ -237,11 +211,8 @@ function carregaListaDespesas(){
         }
         
         line.insertCell(4).append(btn)
-        
     })
-    
 }
-
 
 function pesquisadorDespesa(){
     let ano = document.getElementById('ano').value
@@ -267,16 +238,12 @@ function pesquisadorDespesa(){
         document.querySelector('#error').remove()
     }
 
-
     if(despesasViwed == ''){
 
         
         errorPop.innerHTML = errorMessage
         
     } else{
-
-    
-    
         despesasViwed.forEach(function(d) {
             
             let line = tabelaDespesas.insertRow()
@@ -320,12 +287,18 @@ function pesquisadorDespesa(){
             }
             
             line.insertCell(4).append(btn)
-            
         }) 
-
     }
 }
 
+function handleSearch({key}) {
+    if(key == 'Enter'){
+        pesquisadorDespesa()
+    } 
+}
 
-
-
+function handleRegister({key}) {
+    if(key == 'Enter'){
+        cadastrarDespesa()
+    } 
+}

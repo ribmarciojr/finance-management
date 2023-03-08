@@ -18,9 +18,7 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 	</head>
 
-  <body>
-
-
+  <body onkeydown="handleRegister(event)">
     <nav class="navbar navbar-expand-lg navbar-dark bg-purple mb-5">
       <div class="container">
 
@@ -112,14 +110,15 @@
           </div>
         </div>
 
-        <div class="row mb-2 row-md"><!-- row description-->        
-          
-          <div class="col-12 d-flex ">
-              <input type="text" class="form-control" placeholder="Descrição" id="descricao" onblur="validation.antNullCamp()"   />
+        <div class="row row-md mb-2"><!-- row description-->  
 
+          <div class="col-12 col-md-12">
+            <input type="text" class="form-control" placeholder="Descrição" value=""  onblur="validation.antNullCamp()" oninput="handleSubmit(event)" id="descricao" />
+            <small class="form-text text-subtitle subtitle-alert">Você pode pressionar ENTER para continuar</small>
           </div>
-          
+
         </div>
+
 
         <div class="row"> <!-- Value/Button-->
 
@@ -161,10 +160,6 @@
         </div>
       </div>
     </div>
-
-    
-      
-
   </body>	
 
 </html>

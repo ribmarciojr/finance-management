@@ -18,9 +18,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"> 
 	</head>
 
-  <body onload="carregaListaDespesas()">
-
-
+  <body onload="carregaListaDespesas()" onkeydown="handleSearch(event)">
     <nav class="navbar navbar-expand-lg navbar-dark bg-purple mb-5">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -84,7 +82,7 @@
           </div>
           
           <div class="col-4 col-md-4 order-1">
-            <input type="text" class="form-control" placeholder="Dia" id="dia" />
+            <input type="text" class="form-control" placeholder="Dia" oninput="handleSubmit(event)" id="dia" />
           </div>
 
           
@@ -109,23 +107,20 @@
         <div class="row row-md mb-2"><!-- row description-->  
 
           <div class="col-12 col-md-12">
-            <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
+            <input type="text" class="form-control" placeholder="Descrição" value=""  oninput="handleSubmit(event)" id="descricao" />
+            <small class="form-text text-subtitle subtitle-alert">Você pode pressionar ENTER para continuar</small>
           </div>
 
         </div>
 
-        <div class="row  mb-5"><!-- Value/Button-->
-          
-
+        <div class="row mb-5"><!-- Value/Button-->
           <div class="col-5 col-md-5">
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text">$</div>
               </div>
-              <input type="text" class="form-control" placeholder="Valor" id="valor" />
-
+              <input type="text" class="form-control" placeholder="Valor" id="valor" oninput="handleSubmit(event)" />
             </div>
-            
           </div>
 
           <div class="col-3 col-md-3 offset-4 d-flex justify-content-end">
@@ -137,6 +132,10 @@
         </div>
 
       </div>
+
+      
+        
+     
 
       <div class="container-data"> <!-- Tabela ROW -->
         <div class="row">
